@@ -7,4 +7,20 @@ tree -L 2
 //create file
 touch file.txt
 
+// run unit test
+python manage.py test
+
+// run functional test
+python functional_tests.py
+
+// spin up server
+python manage.py runserver
+// quit server
+cntrl-c
+
+// create lists app
+python manage.py startapp lists
+
+// create django project superlists
+django-admin.py startproject superlists .
 
