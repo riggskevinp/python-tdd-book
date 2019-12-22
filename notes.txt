@@ -24,3 +24,6 @@ python manage.py startapp lists
 // create django project superlists
 django-admin.py startproject superlists .
 
+// clear database and setup again
+rm db.sqlite3
+python manage.py migrate --noinput
