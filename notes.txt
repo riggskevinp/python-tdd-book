@@ -27,3 +27,12 @@ django-admin.py startproject superlists .
 // clear database and setup again
 rm db.sqlite3
 python manage.py migrate --noinput
+
+// run functional_tests
+python manage.py test functional_tests
+
+// run the unit tests 
+python manage.py test lists
+
+// run all tests
+python manage.py test
