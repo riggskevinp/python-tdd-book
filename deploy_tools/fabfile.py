@@ -3,6 +3,9 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = 'https://github.com/riggskevinp/python-tdd-book.git'
+env.user = "ubuntu"
+env.key_filename = "/home/tdd/Desktop/tdd.pem"
+env.hosts = ["ubuntu@ec2-18-224-34-189.us-east-2.compute.amazonaws.com"]
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
@@ -25,7 +28,7 @@ def _get_latest_source():
 def _update_virtualenv():
     if not exists('virtualenv/bin/pip'):
         run(f'python3.6 -m venv virtualenv')
-    run('./virualenv/bin/pip install -r requirements.txt')
+    run('./virtualenv/bin/pip install -r requirements.txt')
 
 def _create_or_update_dotenv():
     append('.env', 'DJANGO_DEBUG_FALSE=y')
@@ -33,7 +36,7 @@ def _create_or_update_dotenv():
     current_contents = run('cat .env')
     if 'DJANGO_SECRET_KEY' not in current_contents:
         new_secret = ''.join(random.SystemRandom().choices('abcdefghijklmnopqrstuvwxyz0123456789', k=50))
-        append(.'env', f'DJANGO_SECRET_KEY={new_secret}')
+        append('.env', f'DJANGO_SECRET_KEY={new_secret}')
 
 def _update_static_files():
     run('./virtualenv/bin/python manage.py collectstatic --noinput')
