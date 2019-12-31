@@ -5,7 +5,7 @@ from fabric.api import cd, env, local, run
 REPO_URL = 'https://github.com/riggskevinp/python-tdd-book.git'
 env.user = "ubuntu"
 env.key_filename = "/home/tdd/Desktop/tdd.pem"
-env.hosts = ["ubuntu@ec2-18-224-34-189.us-east-2.compute.amazonaws.com"]
+env.hosts = ["ubuntu@ec2-3-15-223-247.us-east-2.compute.amazonaws.com"]
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
