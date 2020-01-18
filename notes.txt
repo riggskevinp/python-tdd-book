@@ -37,6 +37,6 @@ python manage.py test lists
 // run all tests
 python manage.py test
 
-// -I prompts password, don't give a password when deploying
+// -I prompts password
 fab deploy:host=ubuntu@bookex-staging.rpkdesign.tech -I
-// Then press enter, blank password
+// Then press enter
